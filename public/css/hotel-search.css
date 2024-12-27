@@ -1,0 +1,18 @@
+#search-container {
+    margin-bottom: 20px;
+}
+
+#search-container input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.hotel-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.hotel-item h2 {
+    margin-top: 0;
+}

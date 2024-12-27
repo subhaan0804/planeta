@@ -1,0 +1,147 @@
+/* Universal reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+    color: #2e7d32; /* Dark green text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container */
+.mainContainer {
+    max-width: 850px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px; /* Rectangular shape with slight rounding */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.mainContainer:hover {
+    transform: scale(1.02);
+}
+
+/* Title styling */
+h1 {
+    font-size: 2.8rem;
+    color: #388e3c; /* Main green title */
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Section titles */
+h2 {
+    font-size: 1.8rem;
+    color: #66bb6a; /* Lighter green */
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 1.3rem;
+    color: #4caf50; /* Regular green */
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Content section styling */
+.contentSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Rectangular inner content boxes */
+.infoBox, .donationBox {
+    background-color: #f1f8e9; /* Light green background */
+    padding: 20px;
+    border: 2px solid #81c784; /* Green border */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Unordered lists */
+ul {
+    list-style: none;
+    margin-bottom: 30px;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #388e3c;
+    position: relative;
+    padding-left: 25px;
+    text-align: left;
+}
+
+/* Custom bullet points */
+ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #66bb6a; /* Lighter green */
+    font-size: 1.5rem;
+}
+
+/* Donation methods styling */
+.donationMethods li {
+    display: inline-block;
+    background-color: #388e3c; /* Dark green button */
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.donationMethods li:hover {
+    background-color: #66bb6a; /* Lighter green on hover */
+    transform: translateY(-5px);
+}
+
+/* Call-to-action styling */
+.ctaText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #388e3c;
+    margin-top: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    transition: color 0.3s ease;
+}
+
+.ctaText:hover {
+    color: #66bb6a;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    p, ul li {
+        font-size: 1.1rem;
+    }
+
+    .donationMethods li {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}

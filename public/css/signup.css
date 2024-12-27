@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9f5f0; /* Light background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer {
+    padding: 40px;
+    padding-top: 0px;
+    width: 300px; /* Fixed width for the form */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+
+.logo {
+    margin-bottom: 20px; /* Space below the logo */
+}
+
+.logo img {
+    margin-top: 0px;
+    width: 250px; /* Adjust logo size */
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width for the form */
+}
+
+form label {
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+p {
+    margin-top: 15px;
+}
+
+a {
+    color: #4caf50; /* Link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+

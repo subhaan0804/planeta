@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(./image/green-trees.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.loginContainer {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 350px;
+}
+
+h2 {
+    text-align: center;
+    color: #2e7d32; 
+    margin-bottom: 30px;
+}
+
+.formGroup {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.formGroup i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #90949c;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #a5d6a7;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4caf50;
+}
+
+.forgotPass {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgotPass a {
+    color: #43a047;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn {
+    width: 100%;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #43a047;
+    text-decoration: none;
+    font-weight: bold;
+}
