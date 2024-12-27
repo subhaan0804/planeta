@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distance Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8">Distance Calculator</h1>
+        <form id="distanceForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="fromCountry">
+                    From Country
+                </label>
+                <select id="fromCountry" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select a country</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="fromCity">
+                    From City
+                </label>
+                <select id="fromCity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select a city</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="toCountry">
+                    To Country
+                </label>
+                <select id="toCountry" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select a country</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="toCity">
+                    To City
+                </label>
+                <select id="toCity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select a city</option>
+                </select>
+            </div>
+            <div class="flex items-center justify-between">
+                <button id="calculateBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Calculate Distance
+                </button>
+            </div>
+        </form>
+        <div id="result" class="mt-8 text-xl font-bold hidden"></div>
+        <div id="loading" class="mt-8 text-xl font-bold hidden">Calculating...</div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            // Fetch countries
+            $.get('/api/countries', function(countries) {
+                countries.forEach(function(country) {
+                    $('#fromCountry, #toCountry').append(`<option value="${country._id}">${country.name}</option>`);
+                });
+            });
+
+            // Fetch cities when country is selected
+            $('#fromCountry, #toCountry').change(function() {
+                const countryId = $(this).val();
+                const citySelect = $(this).attr('id') === 'fromCountry' ? $('#fromCity') : $('#toCity');
+                citySelect.empty().append('<option value="">Select a city</option>');
+                if (countryId) {
+                    $.get(`/api/cities/${countryId}`, function(cities) {
+                        cities.forEach(function(city) {
+                            citySelect.append(`<option value="${city._id}">${city.name}</option>`);
+                        });
+                    });
+                }
+            });
+
+            // Calculate distance
+            $('#calculateBtn').click(function() {
+                const fromCity = $('#fromCity').val();
+                const toCity = $('#toCity').val();
+                if (fromCity && toCity) {
+                    $('#loading').show();
+                    $('#result').hide();
+                    $.post('/api/calculate-distance', { fromCity, toCity }, function(data) {
+                        $('#loading').hide();
+                        $('#result').text(`The distance between the selected cities is ${data.distance} km.`).show();
+                    }).fail(function() {
+                        $('#loading').hide();
+                        $('#result').text('An error occurred while calculating the distance.').show();
+                    });
+                } else {
+                    alert('Please select both cities.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

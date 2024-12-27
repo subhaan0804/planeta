@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTravel - Sustainable Travel Experiences</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+</head>
+<body>
+    <header class="sticky-header">
+        <div class="container">
+            <header class="sticky-header">
+                <div class="container">
+                    <div class="logo">
+                        <img src="/image/logo.png" alt="EcoTravel Logo">
+                        <span style="font-size: 35px;">Planeta</span>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="donation">Donations</a></li>
+                            <li><a href="hotelSearch">Hotels</a></li>
+                            <li><a href="partner">Partnership</a></li>
+                            <li><a href="logout">Logout</a></li>
+                            <li><a href="login" class="login-btn">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+    </header>
+
+<!-- If you want to simply display the username -->
+<% if (locals.user) { %>
+    <p class="loginUsername">Welcome, <%= user %></p>
+<% } else { %>
+    <p class="loginUsername">Not logged in</p>
+<% } %>
+
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Discover Sustainable Travel</h1>
+                <p>Explore the world while minimizing your environmental impact.</p>
+                <a href="carbon-calculator" class="cta-button">Calculate Carbon Footprint</a>
+            </div>
+        </section>
+      <div class="main-container">
+        
+        
+        <nav class="transport-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#flights" class="transport-btn"><i class="lucide-plane"></i> Flights</a></li>
+                    <li><a href="#trains" class="transport-btn"><i class="lucide-train"></i> Trains</a></li>
+                    <li><a href="#hotels" class="transport-btn"><i class="lucide-hotel"></i> Hotels</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div id="transport-content">
+            <div id="flights" class="transport-section">
+                <div class="trip-type">
+                    <button>One-way</button>
+                    <button class="active">Round-trip</button>
+                    <button id="multiCityButton">Multi-city</button>
+                </div>
+        
+                <div class="search-fields">
+                    <div class="search-field">
+                        <input type="text" placeholder="From" value="Mumbai, India (BOM)">
+                    </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="To">
+                        <button class="swap-button">⇆</button>
+                    </div>
+                    <div class="search-field">
+                        <input type="date" id="flight-depart-date" placeholder="Depart">
+                    </div>
+                    <div class="search-field">
+                        <input type="date" id="flight-return-date" placeholder="Return">
+                    </div>
+                </div>
+        
+                <!-- Multi-city search fields -->
+                <div class="multiCityFields" id="multiCityFields">
+                    <div class="search-field">
+                        <input type="text" placeholder="From">
+                    </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="To">
+                    </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="Depart">
+                    </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="Return">
+                    </div>
+                </div>
+        
+                <div class="options">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="direct-flight">
+                        <label for="direct-flight">Direct flight only</label>
+                    </div>
+                    <div>
+                        <select class="dropdown">
+                            <option>1 Adult</option>
+                        </select>
+                        <select class="dropdown">
+                            <option>Economy</option>
+                            <option>Business</option>
+                            <option>First Class</option>
+                        </select>
+                        <select class="dropdown">
+                            <option>5 Payment Types</option>
+                            <option>Credit Card</option>
+                            <option>Debit Card</option>
+                            <option>PayPal</option>
+                            <option>Bank Transfer</option>
+                            <option>Digital Wallet</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-button">Search</button>
+            </div>
+            <div id="trains" class="transport-section">
+                <div class="trip-type">
+                    <button>One-way</button>
+                    <button class="active">Round-trip</button>
+                </div>
+
+                <div class="search-fields">
+                    <div class="search-field">
+                        <input type="text" placeholder="From">
+                    </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="To">
+                        <button class="swap-button">⇆</button>
+                    </div>
+                    <div class="search-field">
+                        <input type="date" id="train-depart-date" placeholder="Depart">
+                    </div>
+                    <div class="search-field">
+                        <input type="date" id="train-return-date" placeholder="Return">
+                    </div>
+                </div>
+
+                <div class="options">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="direct-train">
+                        <label for="direct-train">Direct train only</label>
+                    </div>
+                    <div>
+                        <select class="dropdown">
+                            <option>1 Adult</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                        <select class="dropdown">
+                            <option>Economy</option>
+                            <option>Business</option>
+                            <option>First Class</option>
+                        </select>
+                        <select class="dropdown">
+                            <option>5 Payment Types</option>
+                            <option>Credit Card</option>
+                            <option>Debit Card</option>
+                            <option>PayPal</option>
+                            <option>Bank Transfer</option>
+                            <option>Digital Wallet</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-button">Search</button>
+            </div>
+            <div id="hotels" class="transport-section">
+                <div class="search-fields">
+                    <div class="search-field">
+                        <input type="text" placeholder="Destination">
+                    </div>
+                    <div class="search-field">
+                        <input type="date" id="hotel-check-in" placeholder="Check-in">
+                    </div>
+                    <div class="search-field">
+                        <input type="date" id="hotel-check-out" placeholder="Check-out">
+                    </div>
+                </div>
+
+                <div class="options">
+                    <div>
+                        <select class="dropdown">
+                            <option>1 Room, 2 Adults</option>
+                            <option>2 Room, 2 Adults, 2 Childrens</option>
+                            <option>1 Room, 4 Adults</option>
+                            <option>1 Room, 2 Adults,  2 Childrens</option>
+
+                            
+                        </select>
+                        <select class="dropdown">
+                            <option>5 Payment Types</option>
+                            <option>Credit Card</option>
+                            <option>Debit Card</option>
+                            <option>PayPal</option>
+                            <option>Bank Transfer</option>
+                            <option>Digital Wallet</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-button">Search</button>
+            </div>
+        </div>
+        
+        <div id="transport-content">
+            <div id="trains" class="transport-section">
+                <h3>Train Bookings</h3>
+                <p>Book eco-friendly train journeys here.</p>
+                <!-- Add train booking form or content here -->
+            </div>
+            <div id="flights" class="transport-section">
+                <h3>Flight Bookings</h3>
+                <p>Find and book sustainable flights.</p>
+                <!-- Add flight booking form or content here -->
+            </div>
+            <div id="hotels" class="transport-section">
+                <h3>Hotel Bookings</h3>
+                <p>Discover and book eco-friendly accommodations.</p>
+                <!-- Add hotel booking form or content here -->
+            </div>
+        </div>
+
+        <section id="accommodations" class="container">
+          <h2><i class="lucide-home"></i> Eco-Friendly Accommodations</h2>
+          <div class="accommodation-slider">
+              <button class="arrow left-arrow">&lt;</button>
+              <div id="accommodations-container">
+                  <div class="accommodation-card">
+                      <img src="/image/image1.jpg" alt="Green Forest Retreat">
+                      <h3>Green Forest Retreat</h3>
+                      <p>Redwood National Park, CA</p>
+                      <div class="rating">★★★★★ 4.8</div>
+                  </div>
+                  <div class="accommodation-card">
+                      <img src="/image/image2.jpg" alt="Sustainable Seaside Lodge">
+                      <h3>Sustainable Seaside Lodge</h3>
+                      <p>Big Sur, CA</p>
+                      <div class="rating">★★★★☆ 4.6</div>
+                  </div>
+                  <div class="accommodation-card">
+                      <img src="/image/image3.jpg" alt="Eco Mountain Cabin">
+                      <h3>Eco Mountain Cabin</h3>
+                      <p>Rocky Mountains, CO</p>
+                      <div class="rating">★★★★★ 4.7</div>
+                  </div>
+                  <div class="accommodation-card">
+                      <img src="/image/image1.jpg" alt="Eco Treehouse">
+                      <h3>Eco Treehouse</h3>
+                      <p>Olympic National Park, WA</p>
+                      <div class="rating">★★★★☆ 4.5</div>
+                  </div>
+                  <div class="accommodation-card">
+                      <img src="/image/image2.jpg" alt="Solar-Powered Desert Oasis">
+                      <h3>Solar-Powered Desert Oasis</h3>
+                      <p>Joshua Tree, CA</p>
+                      <div class="rating">★★★★★ 4.9</div>
+                  </div>
+                  <div class="accommodation-card">
+                      <img src="/image/image3.jpg" alt="Lakeside Eco-Lodge">
+                      <h3>Lakeside Eco-Lodge</h3>
+                      <p>Lake Tahoe, NV</p>
+                      <div class="rating">★★★★☆ 4.6</div>
+                  </div>
+              </div>
+              <button class="arrow right-arrow">&gt;</button>
+          </div>
+      </section>
+      <section id="featuresSlider">
+        <div class="sliderContainer">
+            <div class="slide">
+                <img src="image/loc2.png" alt="Top travel app in India">
+                <h3>Top travel app in India</h3>
+                <p>Highly rated in App Store & Google Play</p>
+            </div>
+            <div class="slide">
+                <img src="/image/loc1.png" alt="Shop with confidence">
+                <h3>Shop with confidence</h3>
+                <p>No hidden fees, taxes or other nasty surprises</p>
+            </div>
+            <div class="slide">
+                <img src="/image/loc3.png" alt="Pay the way you want">
+                <h3>Pay the way you want</h3>
+                <p>See only sellers who support your preferred methods</p>
+            </div>
+            <div class="slide">
+                <img src="/image/loc4.png" alt="Instant booking">
+                <h3>Instant booking</h3>
+                <p>For selected sellers, book with just a couple of clicks</p>
+            </div>
+        </div>
+        <button class="prevButton" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="nextButton" onclick="changeSlide(1)">&#10095;</button>
+    </section>
+    
+      <section id="trip-ideas" class="container">
+        <h2>Trip Ideas from India</h2>
+        <div class="trip-ideas-container">
+            <div class="trip-card">
+                <img src="/image/goa.jpeg" alt="Goa">
+                <h3>Goa</h3>
+                <p>India</p>
+                <p>Round-trip from ₹4,534</p>
+            </div>
+            <div class="trip-card">
+                <img src="/image/jaipur.jpg" alt="Jaipur">
+                <h3>Jaipur</h3>
+                <p>India</p>
+                <p>Round-trip from ₹7,189</p>
+            </div>
+            <div class="trip-card">
+                <img src="/image/varanasi.jpeg" alt="Varanasi">
+                <h3>Varanasi</h3>
+                <p>India</p>
+                <p>Round-trip from ₹9,254</p>
+            </div>
+            <div class="trip-card">
+                <img src="/image/agra.jpeg" alt="Agra">
+                <h3>Agra</h3>
+                <p>India</p>
+                <p>Round-trip from ₹11,945</p>
+            </div>
+            <div class="trip-card">
+                <img src="/image/north.jpeg" alt="North Male Atoll">
+                <h3>North Male Atoll</h3>
+                <p>Maldives</p>
+                <p>Round-trip from ₹15,099</p>
+            </div>
+            <div class="trip-card">
+                <img src="/image/Kathmandu.jpeg" alt="Kathmandu">
+                <h3>Kathmandu</h3>
+                <p>Nepal</p>
+                <p>Round-trip from ₹15,986</p>
+            </div>
+        </div>
+    </section>
+    
+      <section id="merchandise" class="container">
+        <h2><i class="lucide-shopping-bag"></i> Eco-Friendly Merchandise</h2>
+        <div class="merchandise-slider">
+            <button class="arrow left-arrow">&lt;</button>
+            <div id="merchandise-container">
+                <div class="merchandise-card">
+                    <img src="/image/merch1.png" alt="Reusable Water Bottle">
+                    <h3>T-shirts</h3>
+                    <p>support the eco travelling</p>
+                    <div class="price">$24.99</div>
+                </div>
+                <div class="merchandise-card">
+                    <img src="/image/merch2.png" alt="Cups">
+                    <h3>Caps</h3>
+                    <p>cool caps</p>
+                    <div class="price">$39.99</div>
+                </div>
+                <div class="merchandise-card">
+                    <img src="/image/merch3.png" alt="Bamboo Utensil Set">
+                    <h3>Coffee Cups</h3>
+                    <p>cool cups</p>
+                    <div class="price">$14.99</div>
+                </div>
+                <div class="merchandise-card">
+                    <img src="/image/merch4.jpg" alt="Organic Cotton Tote">
+                    <h3>Organic Cotton Tote</h3>
+                    <p>Durable, washable</p>
+                    <div class="price">$19.99</div>
+                </div>
+                <div class="merchandise-card">
+                    <img src="/image/merch5.jpg" alt="Biodegradable Phone Case">
+                    <h3>Biodegradable Phone Case</h3>
+                    <p>For iPhone and Android</p>
+                    <div class="price">$29.99</div>
+                </div>
+                <div class="merchandise-card">
+                    <img src="/image/merch6.jpg" alt="Recycled Plastic Backpack">
+                    <h3>Recycled Plastic Backpack</h3>
+                    <p>25L capacity, water-resistant</p>
+                    <div class="price">$59.99</div>
+                </div>
+            </div>
+            <button class="arrow right-arrow">&gt;</button>
+        </div>
+    </section>
+
+        <section id="partners" class="container">
+          <h2><i class="lucide-handshake"></i> Our Eco-Friendly Partners</h2>
+          <div class="partners-container">
+              <div class="partner-logo">
+                  <img class="logo" src="/image/logo1.jpg" alt="Green Energy Co.">
+                  <p>IHG hotels and resorts</p>
+              </div>
+              <div class="partner-logo">
+                  <img class="logo" src="/image/logo2.png" alt="Sustainable Gear Inc.">
+                  <p>Accor</p>
+              </div>
+              <div class="partner-logo">
+                  <img class="logo" src="/image/logo3.jpg" alt="Eco Tours Ltd.">
+                  <p>BWH Hotels</p>
+              </div>
+          </div>
+      </section>
+      </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 EcoTravel. All rights reserved.</p>
+            <p>Committed to sustainable and responsible travel.</p>
+        </div>
+        
+    </footer>
+    <script>
+      let currentSlide = 0;
+
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.slide');
+    currentSlide += direction;
+
+    if (currentSlide < 0) {
+        currentSlide = slides.length - 1; // Loop to last slide
+    } else if (currentSlide >= slides.length) {
+        currentSlide = 0; // Loop to first slide
+    }
+
+    const sliderContainer = document.querySelector('.sliderContainer');
+    sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+      const accommodationsContainer = document.getElementById('accommodations-container');
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const accommodationCards = document.querySelectorAll('.accommodation-card');
+
+let currentIndex = 0;
+
+function updateVisibleAccommodations() {
+    const totalCards = accommodationCards.length;
+    accommodationCards.forEach((card, index) => {
+        card.style.display = 'none';
+    });
+
+    // Show three cards starting from the current index
+    for (let i = 0; i < 3; i++) {
+        let index = (currentIndex + i) % totalCards;
+        accommodationCards[index].style.display = 'block';
+    }
+}
+
+leftArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + accommodationCards.length) % accommodationCards.length;
+    updateVisibleAccommodations();
+});
+
+rightArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % accommodationCards.length;
+    updateVisibleAccommodations();
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.transport-nav a');
+    const sections = document.querySelectorAll('.transport-section');
+    const tripTypeButtons = document.querySelectorAll('.trip-type button');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            
+            sections.forEach(section => {
+                if (section.id === targetId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Update active state for nav links
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    tripTypeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            tripTypeButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const isRoundTrip = this.textContent.toLowerCase() === 'round-trip';
+            const returnDateInputs = document.querySelectorAll('input[placeholder="Return"]');
+            returnDateInputs.forEach(input => {
+                input.disabled = !isRoundTrip;
+                input.style.opacity = isRoundTrip ? '1' : '0.5';
+            });
+        });
+    });
+
+    // Set min date for all date inputs to today
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+        input.min = today;
+        input.value = today;
+    });
+
+    // Set min date for return and check-out to tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const returnDateInputs = document.querySelectorAll('#flight-return-date, #train-return-date, #hotel-check-out');
+    returnDateInputs.forEach(input => {
+        input.min = tomorrow.toISOString().split('T')[0];
+        input.value = tomorrow.toISOString().split('T')[0];
+    });
+
+    // Handle return option for flights and trains
+    ['flight', 'train'].forEach(type => {
+        const departDateInput = document.getElementById(`${type}-depart-date`);
+        const returnDateInput = document.getElementById(`${type}-return-date`);
+
+        departDateInput.addEventListener('change', function() {
+            const departDate = new Date(this.value);
+            const nextDay = new Date(departDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            returnDateInput.min = nextDay.toISOString().split('T')[0];
+            if (new Date(returnDateInput.value) <= departDate) {
+                returnDateInput.value = nextDay.toISOString().split('T')[0];
+            }
+        });
+    });
+
+    // Handle hotel check-out date
+    const checkInInput = document.getElementById('hotel-check-in');
+    const checkOutInput = document.getElementById('hotel-check-out');
+
+    checkInInput.addEventListener('change', function() {
+        const checkInDate = new Date(this.value);
+        const nextDay = new Date(checkInDate);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkOutInput.min = nextDay.toISOString().split('T')[0];
+        if (new Date(checkOutInput.value) <= checkInDate) {
+            checkOutInput.value = nextDay.toISOString().split('T')[0];
+        }
+    });
+
+    // Set initial check-out date to next day
+    const checkoutTomorrow = new Date();
+    checkoutTomorrow.setDate(checkoutTomorrow.getDate() + 1);
+    checkOutInput.value = checkoutTomorrow.toISOString().split('T')[0];
+    
+    
+});
+  </script>  
+</body>
+</html>
+
+

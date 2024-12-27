@@ -1,0 +1,582 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #2e7d32;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Add navbar compatibility styles */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calculatorContainer {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #388e3c;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #4caf50;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #c8e6c9;
+            box-sizing: border-box;
+        }
+
+        .calculate-btn {
+            background-color: #388e3c;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .calculate-btn:hover {
+            background-color: #66bb6a;
+        }
+
+        .resultContainer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f8e9;
+            border-radius: 10px;
+            border: 1px solid #66bb6a;
+            display: none;
+        }
+
+        .resultContainer.visible {
+            display: block;
+        }
+
+        #carbonFootprint {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 15px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        ul li {
+            color: #2e7d32;
+            padding: 8px 0;
+            border-bottom: 1px solid #c8e6c9;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #388e3c;
+            margin: 15px 0 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="calculatorContainer">
+            <h1>Carbon Footprint Calculator 🌍</h1>
+            <p>Calculate your travel carbon footprint and see offset options</p>
+
+            <form id="carbonForm" onsubmit="return false;">
+                <div class="input-group">
+                    <label for="distance">Distance (in kilometers):</label>
+                    <input type="number" id="distance" name="distance" min="0" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="travelType">Mode of Travel:</label>
+                    <select id="travelType" name="travelType" required>
+                        <option value="flight">Flight ✈️</option>
+                        <option value="train">Train 🚂</option>
+                        <option value="car">Car 🚗</option>
+                    </select>
+                </div>
+
+                <button class="calculate-btn" onclick="calculateFootprint()">Calculate Carbon Footprint</button>
+            </form>
+
+            <div id="resultContainer" class="resultContainer">
+                <h2 class="section-title">Your Carbon Footprint:</h2>
+                <div id="carbonFootprint"></div>
+
+                <h2 class="section-title">Carbon Offset Options:</h2>
+                <ul id="carbonOffsetSuggestions"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateFootprint() {
+            const distance = document.getElementById('distance').value;
+            const travelType = document.getElementById('travelType').value;
+            let carbonFootprint = 0;
+
+            if (!distance || distance <= 0) {
+                alert('Please enter a valid distance.');
+                return;
+            }
+
+            // Approximate emissions factors (kg CO2 per km traveled):
+            const emissionFactors = {
+                flight: 0.254, // kg CO2/km for flight
+                train: 0.041,  // kg CO2/km for train
+                car: 0.12      // kg CO2/km for car
+            };
+
+            // Calculate carbon footprint
+            carbonFootprint = distance * emissionFactors[travelType];
+            
+            // Display carbon footprint result
+            document.getElementById('carbonFootprint').innerText = `${carbonFootprint.toFixed(2)} kg CO2`;
+            
+            // Show results container
+            document.getElementById('resultContainer').classList.add('visible');
+
+            // Show carbon offset suggestions
+            generateOffsetSuggestions(carbonFootprint);
+        }
+
+        function generateOffsetSuggestions(carbonFootprint) {
+            const suggestionsList = document.getElementById('carbonOffsetSuggestions');
+            suggestionsList.innerHTML = '';
+
+            // Carbon offset options (based on how much to offset):
+            const offsetProjects = [
+                { name: "Plant Trees 🌳", costPerKg: 0.005 },
+                { name: "Support Renewable Energy ⚡", costPerKg: 0.007 },
+                { name: "Donate to Reforestation Projects 🌲", costPerKg: 0.004 }
+            ];
+
+            offsetProjects.forEach(project => {
+                const offsetCost = carbonFootprint * project.costPerKg;
+                const listItem = document.createElement('li');
+                listItem.textContent = `${project.name}: $${offsetCost.toFixed(2)} to offset ${carbonFootprint.toFixed(2)} kg CO2`;
+                suggestionsList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #2e7d32;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calculatorContainer {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #757575;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tab-button.active {
+            color: #388e3c;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #388e3c;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h1 {
+            color: #388e3c;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #4caf50;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #c8e6c9;
+            box-sizing: border-box;
+        }
+
+        .calculate-btn {
+            background-color: #388e3c;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .calculate-btn:hover {
+            background-color: #66bb6a;
+        }
+
+        .resultContainer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f8e9;
+            border-radius: 10px;
+            border: 1px solid #66bb6a;
+            display: none;
+        }
+
+        .resultContainer.visible {
+            display: block;
+        }
+
+        #carbonFootprint {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 15px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        ul li {
+            color: #2e7d32;
+            padding: 8px 0;
+            border-bottom: 1px solid #c8e6c9;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #388e3c;
+            margin: 15px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .vehicle-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="calculatorContainer">
+            <h1>Carbon Footprint Calculator 🌍</h1>
+            <p>Calculate your travel carbon footprint by mode of transport</p>
+
+            <div class="tab-container">
+                <button class="tab-button active" onclick="showTab('car')">🚗 Car</button>
+                <button class="tab-button" onclick="showTab('train')">🚂 Train</button>
+                <button class="tab-button" onclick="showTab('flight')">✈️ Flight</button>
+                <button class="tab-button" onclick="showTab('ship')">🚢 Ship</button>
+            </div>
+
+            <!-- Car Tab -->
+            <div id="carTab" class="tab-content active">
+                <form id="carForm" onsubmit="return false;">
+                    <div class="input-group">
+                        <label for="carDistance">Distance (in kilometers):</label>
+                        <input type="number" id="carDistance" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="carFuelType">Fuel Type:</label>
+                        <select id="carFuelType" required>
+                            <option value="petrol">Petrol</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="lpg">LPG</option>
+                            <option value="cng">CNG</option>
+                            <option value="electric">Electric</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calculateCarFootprint()">Calculate</button>
+                </form>
+            </div>
+
+            <!-- Train Tab -->
+            <div id="trainTab" class="tab-content">
+                <form id="trainForm" onsubmit="return false;">
+                    <div class="input-group">
+                        <label for="trainDistance">Distance (in kilometers):</label>
+                        <input type="number" id="trainDistance" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="trainType">Train Type:</label>
+                        <select id="trainType" required>
+                            <option value="electric">Electric Locomotive</option>
+                            <option value="diesel">Diesel Locomotive</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calculateTrainFootprint()">Calculate</button>
+                </form>
+            </div>
+
+            <!-- Flight Tab -->
+            <div id="flightTab" class="tab-content">
+                <form id="flightForm" onsubmit="return false;">
+                    <div class="input-group">
+                        <label for="flightDistance">Distance (in kilometers):</label>
+                        <input type="number" id="flightDistance" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="flightClass">Flight Class:</label>
+                        <select id="flightClass" required>
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                            <option value="first">First Class</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calculateFlightFootprint()">Calculate</button>
+                </form>
+            </div>
+
+            <!-- Ship Tab -->
+            <div id="shipTab" class="tab-content">
+                <form id="shipForm" onsubmit="return false;">
+                    <div class="input-group">
+                        <label for="shipDistance">Distance (in kilometers):</label>
+                        <input type="number" id="shipDistance" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="shipType">Vessel Type:</label>
+                        <select id="shipType" required>
+                            <option value="cruise">Cruise Ship</option>
+                            <option value="ferry">Ferry</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calculateShipFootprint()">Calculate</button>
+                </form>
+            </div>
+
+            <div id="resultContainer" class="resultContainer">
+                <h2 class="section-title">Your Carbon Footprint:</h2>
+                <div id="carbonFootprint"></div>
+
+                <h2 class="section-title">Carbon Offset Options:</h2>
+                <ul id="carbonOffsetSuggestions"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Emission factors (kg CO2 per km)
+        const emissionFactors = {
+            car: {
+                petrol: 0.192,
+                diesel: 0.171,
+                lpg: 0.159,
+                cng: 0.154,
+                electric: 0.053
+            },
+            train: {
+                electric: 0.041,
+                diesel: 0.072
+            },
+            flight: {
+                economy: 0.115,
+                business: 0.234,
+                first: 0.342
+            },
+            ship: {
+                cruise: 0.251,
+                ferry: 0.115
+            }
+        };
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function calculateCarFootprint() {
+            const distance = document.getElementById('carDistance').value;
+            const fuelType = document.getElementById('carFuelType').value;
+            if (!validateInput(distance)) return;
+            
+            const carbonFootprint = distance * emissionFactors.car[fuelType];
+            displayResults(carbonFootprint);
+        }
+
+        function calculateTrainFootprint() {
+            const distance = document.getElementById('trainDistance').value;
+            const trainType = document.getElementById('trainType').value;
+            if (!validateInput(distance)) return;
+
+            const carbonFootprint = distance * emissionFactors.train[trainType];
+            displayResults(carbonFootprint);
+        }
+
+        function calculateFlightFootprint() {
+            const distance = document.getElementById('flightDistance').value;
+            const flightClass = document.getElementById('flightClass').value;
+            if (!validateInput(distance)) return;
+
+            const carbonFootprint = distance * emissionFactors.flight[flightClass];
+            displayResults(carbonFootprint);
+        }
+
+        function calculateShipFootprint() {
+            const distance = document.getElementById('shipDistance').value;
+            const shipType = document.getElementById('shipType').value;
+            if (!validateInput(distance)) return;
+
+            const carbonFootprint = distance * emissionFactors.ship[shipType];
+            displayResults(carbonFootprint);
+        }
+
+        function validateInput(distance) {
+            if (!distance || distance <= 0) {
+                alert('Please enter a valid distance.');
+                return false;
+            }
+            return true;
+        }
+
+        function displayResults(carbonFootprint) {
+            document.getElementById('carbonFootprint').innerText = `${carbonFootprint.toFixed(2)} kg CO2`;
+            document.getElementById('resultContainer').classList.add('visible');
+            generateOffsetSuggestions(carbonFootprint);
+        }
+
+        function generateOffsetSuggestions(carbonFootprint) {
+            const suggestionsList = document.getElementById('carbonOffsetSuggestions');
+            suggestionsList.innerHTML = '';
+
+            const offsetProjects = [
+                { name: "Plant Trees 🌳", costPerKg: 0.005 },
+                { name: "Support Renewable Energy ⚡", costPerKg: 0.007 },
+                { name: "Donate to Reforestation Projects 🌲", costPerKg: 0.004 }
+            ];
+
+            offsetProjects.forEach(project => {
+                const offsetCost = carbonFootprint * project.costPerKg;
+                const listItem = document.createElement('li');
+                listItem.textContent = `${project.name}: $${offsetCost.toFixed(2)} to offset ${carbonFootprint.toFixed(2)} kg CO2`;
+                suggestionsList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
